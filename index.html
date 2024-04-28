@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+
+  <title>Browser Extensions API</title>
+
+  <meta name="description" content="A framework for easily creating beautiful presentations using HTML" />
+  <meta name="author" content="Hakim El Hattab" />
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="./reset.css" />
+  <link rel="stylesheet" href="./reveal.css" />
+  <link rel="stylesheet" href="./theme/black.css" id="theme" />
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+</head>
+
+<body>
+  <div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <section>
+        
+          <img src="./assets/images/pngegg.png" alt="browser extensions logo" style="
+                height: 180px;
+                margin: 0 auto 4rem auto;
+                background: transparent;
+              " class="demo-logo" />
+        
+        <h3>Browser Extensions API</h3>
+        <p>
+          <small>Created by
+            <a href="https://github.com/Zelenskiy">Oleksandr Zelenskiy</a>
+          </small>
+        </p>
+      </section>
+
+      <section>
+        <h2>Hello</h2>
+        <p>My name is Oleksandr Zelenskyi. I study in RS School.</p>
+      </section>
+
+      <section>
+        <section>
+          <h2> What is a browser extension API </h2>
+          <p>A browser extension API is a set of programming interfaces provided by web browsers for developing
+            extensions to modify and enhance browser functionality.</p>
+        </section>
+        <section>
+          <h2> Definition of API </h2>
+          <p>An API, or Application Programming Interface, is a set of protocols and tools that allows software
+            applications to communicate with each other by defining methods and data structures for interaction.</p>
+        </section>
+        <section>
+          <h2> Role of browser extension APIs </h2>
+          <p>Browser extension APIs enable developers to extend the functionality of web browsers by providing access to
+            browser features and resources, allowing for the creation of custom functionalities.</p>
+        </section>
+        <section>
+          <h2> Types of extensions: </h2>
+          <p>Chrome, Firefox, Edge, etc.</p>
+        </section>
+
+      </section>
+
+      <section>
+        <section>
+          <h2> How browser extensions work</h2>
+          <p></p>
+        </section>
+        <section>
+          <h2> Principle of extension operation </h2>
+          <p>Browser extensions operate by injecting custom scripts into web pages, interacting with the browser through
+            APIs to modify page content and behavior. They can also run background scripts independently of the active
+            web page</p>
+        </section>
+        <section>
+          <h2> Extension life cycle: installation, usage, removal </h2>
+          <p>The extension life cycle consists of installation, where users add the extension to their browser, followed
+            by usage, during which the extension enhances the browsing experience. Eventually, users may choose to
+            remove the extension from their browser.</p>
+        </section>
+
+      </section>
+
+      <section>
+        <section>
+          <h2> Key features of extension APIs</h2>
+          <p></p>
+        </section>
+        <section>
+          <h2> Manipulating web pages </h2>
+          <p>Extension APIs offer methods for dynamically manipulating web pages, enabling developers to customize
+            content, styles, and interactions. This involves injecting scripts, modifying DOM elements, and enhancing
+            the functionality of web applications.</p>
+        </section>
+        <section>
+          <h2> User interaction </h2>
+          <p>Extension APIs facilitate user interaction by enabling developers to create intuitive interfaces with UI
+            components such as buttons and menus. This allows users to engage with extension features through inputs,
+            events, and feedback mechanisms, enhancing usability.</p>
+        </section>
+        <section>
+          <h2> Network operations </h2>
+          <p>Extension APIs support network operations, enabling developers to send HTTP requests and interact with
+            remote servers. This functionality allows extensions to fetch data, interact with APIs, and integrate
+            external services within the browser environment.</p>
+        </section>
+        <section>
+          <h2> Local storage </h2>
+          <p>Extension APIs offer local storage mechanisms for persisting data within the browser. This allows
+            developers to store user preferences and application state, ensuring a seamless browsing experience across
+            sessions.</p>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2> Popular uses of extension APIs </h2>
+          <p></p>
+        </section>
+        <section>
+          <h2> Ad blocking and tracking protection </h2>
+          <p>Ad blocking and tracking protection extensions are widely used applications of extension APIs. They utilize
+            browser functionality to detect and block ads, pop-ups, and tracking scripts, enhancing user privacy and
+            browsing experience.</p>
+        </section>
+        <section>
+          <h2> Password managers </h2>
+          <p>Password managers are popular extensions that utilize extension APIs to enhance security and convenience
+            for users. They securely store and autofill passwords, generate strong passwords, and offer additional
+            features like syncing and multi-factor authentication support.</p>
+        </section>
+        <section>
+          <h2> Productivity enhancements </h2>
+          <p>Productivity enhancement extensions utilize extension APIs to streamline tasks and improve efficiency for
+            users. They offer a range of tools from to-do lists to advanced project management features, leveraging
+            browser functionality to integrate with web applications and automate workflows.</p>
+        </section>
+        <section>
+          <h2> Website functionality extensions </h2>
+          <p>Website functionality extensions enhance specific websites or web applications by adding new features or
+            modifying existing ones. They leverage extension APIs to interact with page content, integrate with
+            third-party services, and provide custom functionality tailored to users' needs.</p>
+        </section>
+
+      </section>
+      <section>
+        <section>
+          <h2> Usage examples </h2>
+          <p></p>
+        </section>
+
+        <section>
+          <h2>How to Write Your Own Basic Browser Extension</h2>
+          <p>Now let's start by writing a very basic extension.</p>
+          <p>
+            To begin, we'll create a folder inside which we create a file
+            named <code class="hljs javascript">manifest.json</code>
+          </p>
+          <p></p>
+        </section>
+        <section>
+          <h2>What is a manifest file?</h2>
+          <p>
+            A manifest file is required for any browser extension. This file
+            contains basic data about our extension, such as name, version,
+            etc.
+          </p>
+          <p>Now copy the following fragment into the manifest.json file:</p>
+          <pre>
+              <code
+                data-id="code-animation" class="hljs javascript"  data-trim data-line-numbers>
+                  {
+                    "manifest_version":2,
+                    "version":"1.0",
+                    "name":"Test",
+                  }
+              </code>
+            </pre>
+        </section>
+        <section>
+          <h2>How to load the extension file</h2>
+          <p>For Chrome users:</p>
+          <p>In the address bar search for this: chrome://extensions</p>
+
+          <p>Enable Developer Mode and switch into it</p>
+          <p>
+            Click the Load unpacked button and select the extension directory
+          </p>
+
+          <p></p>
+          <p></p>
+        </section>
+        <section>
+          <h2></h2>
+          <p>
+            You've installed the extension successfully. But the extension
+            doesn't do anything currently. Now let's add some functionality to
+            our extension.
+          </p>
+          <p></p>
+          <p></p>
+        </section>
+        <section>
+          <h2></h2>
+          <p>To do this, we'll edit our manifest.json file like this:</p>
+          <pre>
+              <code
+                data-id="code-animation" class="hljs javascript"  data-trim data-line-numbers>
+                {
+                  "manifest_version":2,
+                  "version":"1.0",
+                  "name":"Test",
+                  "content_scripts":[
+                    {
+                     "matches":["&lt;all_urls&gt;"],
+                     "js":["main.js"]
+                    }
+                  ]
+                }
+              </code>
+            </pre>
+        </section>
+        <section>
+          <h2></h2>
+          <p>
+            In the above code, we added a content script to manifest.json.
+            Content scripts can manipulate the Document Object Model of the
+            web page. We can inject JS (and CSS) into a web page using a
+            content script.
+          </p>
+          <p></p>
+          <p></p>
+        </section>
+        <section>
+          <h2></h2>
+          <p>
+            "matches" contains the list of domains and subdomains where the
+            content script should be added and js is an array of the JS files
+            to be loaded.
+          </p>
+          <p></p>
+          <p></p>
+        </section>
+        <section>
+          <h2></h2>
+          <p>
+            Now inside the same directory create a main.js file and add the
+            following code:
+          </p>
+          <pre>
+              <code
+                data-id="code-animation" class="hljs javascript"  data-trim data-line-numbers>
+                alert("The test extension is up and running")
+              </code>
+            </pre>
+          <p>
+            Now reload the extension and when you visit any URLs you will see
+            an alert message.
+          </p>
+        </section>
+        <section>
+          <h2>How to Customize Your Browser Extension</h2>
+          <p>Now let's have some more fun with our extension.</p>
+          <p>
+            What we are going to do now is create a web extension that changes
+            all the images of a webpage we visit to an image we choose.
+          </p>
+          <p></p>
+        </section>
+
+        <section>
+          <h2></h2>
+          <p>
+            For this, just add any image to the current directory and change
+            the main.js file to:
+          </p>
+          <pre>
+              <code
+                data-id="code-animation" class="hljs javascript"  data-trim data-line-numbers>
+                console.log("The extension is up and running");
+  
+                var images = document.getElementsByTagName('img')
+  
+                for (elt of images) {
+                  elt.src = `${browser.runtime.getURL("pp.jpg")}`
+                  elt.alt = 'an alt text'
+                }
+              </code>
+            </pre>
+        </section>
+        <section>
+          <p>
+            Where can it be used? Interesting question. Maybe for people with
+            special needs
+          </p>
+        </section>
+        <section>
+          <h2></h2>
+          <p>
+            I almost forgot. You still need to make changes to the file
+            manifest.json here
+          </p>
+          <pre>
+                <code
+                  data-id="code-animation" class="hljs javascript"  data-trim data-line-numbers>
+                  {
+                    "manifest_version":2,
+                    "version":"1.0",
+                    "name":"Test",
+                    "content_scripts":[
+                    {
+                    "matches":["&lt;all_urls&gt;"],
+                    "js":["main.js"]
+                    }
+                    ],
+                    "web_accessible_resources": [
+                      "pp.jpg"
+                    ]
+                  }
+                </code>
+              </pre>
+        </section>
+        <section>
+          <h2></h2>
+          <p>
+            Now just reload the extension and go to any URL. You should now
+            see all images change to the image that is in your current working
+            directory.
+          </p>
+        </section>
+
+        <section>
+          <h2 data-id="code-title">How to add icons to your extension</h2>
+          <p>Add the following code in the manifest.json file:</p>
+          <pre>
+              <code data-id="code-animation" class="hljs javascript"  data-trim data-line-numbers>
+              "icons": {
+                "48": "icon-48.png",
+                "96": "icon-96.png"
+              }
+              </code>
+            </pre>
+        </section>
+
+        <section>
+          <h2>How to add a toolbar button to your extension</h2>
+          <p>
+            Now we'll add a button located in the toolbar of your browser.
+            Users can interact with the extension using this button.
+          </p>
+          <p>
+            To add a toolbar button, add the following lines to the
+            manifest.json file:
+          </p>
+          <pre>
+            <code data-id="code-animation" class="hljs javascript"  data-trim data-line-numbers>
+              "background":{
+                "scripts":["background.js"]
+              },
+              "permissions":[
+                "tabs"
+              ]
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h2></h2>
+          <p>
+            Then we'll create a new file named background.js in the current
+            working directory and add the following lines in the file:
+          </p>
+          <pre>
+            <code data-id="code-animation" class="hljs javascript"  data-trim data-line-numbers>
+              function openTab(){
+      
+                var newTab = browser.tabs.create({
+                  url:'https://github.com/Zelenskiy',
+                  active:true
+                })
+              }
+              
+              browser.browserAction.onClicked.addListener(openTab)
+            </code>
+          </pre>
+          <p>Now reload the extension!</p>
+        </section>
+
+        <section>
+          <p>
+            Whenever someone clicks the button, it calls the openTab function
+            which opens a new tab with the URL that links to my github.
+            Also, the active key, when set to true, makes the newly
+            created tab the current tab.
+          </p>
+          <p>
+            Note that you can use APIs provided by browsers in the background
+            script.
+          </p>
+        </section>
+        <section>
+          <p>
+            We've covered some basics of browser extensions that we'll be able to use in everyday life. The main thing
+            is that we have ideas of what we need.
+          </p>
+        </section>
+
+
+      </section>
+
+      <section>
+        <section>
+          <h2> Recommendations for extension development</h2>
+          <p></p>
+        </section>
+        <section>
+          <h2> Using browser documentation</h2>
+          <p>Browser documentation is a crucial resource for extension developers. It offers detailed information about
+            available APIs, methods, and usage examples, helping developers understand how to integrate browser features
+            into their extensions effectively.</p>
+        </section>
+        <section>
+          <h2> Extension project structure</h2>
+          <p>The extension project structure is essential for organizing code, assets, and resources effectively. It
+            typically includes directories for scripts, stylesheets, images, and configuration files. A well-defined
+            structure aids in code maintenance, collaboration, and ensures compatibility across browsers.</p>
+        </section>
+        <section>
+          <h2> Debugging and testing</h2>
+          <p>Debugging and testing are essential for ensuring the quality and reliability of an extension. Developers
+            can use browser developer tools and logging techniques for debugging, while testing involves manual
+            interaction and automated testing to validate functionality, performance, and compatibility across various
+            environments.</p>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2> Conclusion</h2>
+          <p></p>
+        </section>
+        <section>
+          <h2> </h2>
+          <p>In conclusion, I would like to emphasize the importance of learning and using browser extension APIs.
+            These interfaces open many possibilities for the development of various extensions that can greatly
+            facilitate and improve the user experience on the Internet. </p>
+        </section>
+        <section>
+          <h2> </h2>
+          <p>They allow developers to create convenient
+            tools for working with web pages, improve user security and privacy, promote productivity, and provide a
+            personalized approach to using the Internet. Understanding the workings and capabilities of extension
+            APIs is key to developing effective and useful tools that can meet the needs of today's Internet users.
+          </p>
+        </section>
+      </section>
+      <section style="text-align: left;">
+        <h1>Used resources</h1>
+
+        <ol>
+          <li><a href="https://www.freecodecamp.org/news/write-your-own-browser-extensions/">How to Write Your. Own
+              Browser Extension [Example Project Included]. Article by Abhilekh Gautam
+            </a>
+            <img style="display: block; margin: 5px auto" src="./assets/images/qrcode_1714209525238.png" alt="">
+          </li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">MDM web docs. Browser
+              extensions</a>
+            <img style="display: block; margin: 5px auto" src="./assets/images/qrcode_1714209701686.png" alt="">
+          </li>
+
+        </ol>
+      </section>
+      <section>
+        <h2>Thank you</h2>
+      </section>
+    </div>
+  </div>
+
+  <script src="./reveal.js"></script>
+  <script src="plugin/zoom/zoom.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/search/search.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    // Also available as an ES module, see:
+    // https://revealjs.com/initialization/
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      center: true,
+      hash: true,
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [
+        RevealZoom,
+        RevealNotes,
+        RevealSearch,
+        RevealMarkdown,
+        RevealHighlight,
+      ],
+    });
+  </script>
+</body>
+
+</html>
